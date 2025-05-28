@@ -775,7 +775,7 @@ const Portfolio = () => {
           }`}
         >
           <div className="mb-8 relative">
-            <div className="inline-flex items-center bg-gradient-to-r from-purple-500/15 to-blue-500/15 border border-purple-500/30 rounded-full px-6 py-3 mb-8 backdrop-blur-sm">
+            <div className="inline-flex mt-5 mb-0 items-center bg-gradient-to-r from-purple-500/15 to-blue-500/15 border border-purple-500/30 rounded-full px-6 py-3 backdrop-blur-sm">
               <div className="w-3 h-3 bg-green-400 rounded-full mr-3 animate-pulse"></div>
               <span className="text-purple-300 font-medium">
                 Available for opportunities
