@@ -1,0 +1,46 @@
+export const projects = [
+  {
+    id: 1,
+    title: "The Web Arcade",
+    subtitle: "Integrated Gaming Platform",
+    description:
+      "A comprehensive gaming website featuring multiple interactive games in one unified platform. Built with React.js and enhanced with various gaming libraries for smooth gameplay experiences and responsive design across all devices.",
+    technologies: [
+      "React.js",
+      "Tailwind CSS",
+      "React Libraries",
+      "JavaScript",
+      "Responsive Design",
+    ],
+    status: "Featured Project",
+    metrics: ["Multiple Games", "Responsive Design", "Interactive UI"],
+    gradient: "from-purple-600 to-blue-600",
+    image: "/TheWebArcade.png",
+    demoUrl: "https://the-web-arcade.vercel.app",
+    sourceUrl: "https://github.com/Aditya100905/The-Web-Arcade",
+    category: "Frontend",
+    year: "2024",
+  },
+  {
+    id: 2,
+    title: "ToolMatic",
+    subtitle: "Comprehensive Utility Suite",
+    description:
+      "An extensive utility website offering a wide range of tools including PDF manipulation, mathematical calculators, design utilities, and developer tools. Created to streamline everyday digital tasks with an intuitive interface.",
+    technologies: [
+      "React.js",
+      "Tailwind CSS",
+      "React Libraries",
+      "JavaScript",
+      "User Friendly",
+    ],
+    status: "Live Production",
+    metrics: ["20+ Utilities", "PDF Tools", "Developer Ready"],
+    gradient: "from-emerald-600 to-cyan-600",
+    image: "/ToolMatic.png",
+    demoUrl: "https://tool-matic.vercel.app",
+    sourceUrl: "https://github.com/Aditya100905/ToolMatic",
+    category: "Full Stack",
+    year: "2024",
+  },
+];
