@@ -95,7 +95,6 @@ npm run build
 - **Email:** adityakumargoyal06@gmail.com
 - **LinkedIn:** [Aditya Kumar Goyal](https://www.linkedin.com/in/aditya-kumar-goyal-1a631328a)
 - **GitHub:** [Aditya100905](https://github.com/Aditya100905)
-- **Phone:** +91 8920211168
 
 **Location:** IIIT Una, Himachal Pradesh, India
 
