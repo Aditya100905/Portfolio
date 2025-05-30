@@ -43,4 +43,26 @@ export const projects = [
     category: "Full Stack",
     year: "2024",
   },
+  {
+    id: 2,
+    title: "GitHub Contribution Graph",
+    subtitle: "Pixel-perfect GitHub heatmap clone",
+    description:
+      "A fun and visually engaging side project that replicates GitHub's contribution graph using React.js and Tailwind CSS. Built for experimentation and learning, it emulates the visual structure and behavior of GitHub’s contribution calendar with a responsive grid layout and dynamic color-coded activity mapping.",
+    technologies: [
+      "React.js",
+      "Tailwind CSS",
+      "JavaScript",
+      "Pixel Precision",
+      "Responsive Design",
+    ],
+    status: "Live Production",
+    metrics: ["365-Day Grid", "Color Mapping", "Contribution Visualization"],
+    gradient: "from-green-600 to-lime-600",
+    image: "/GitHubContri.png",
+    demoUrl: "https://git-hub-contribution-graph-topaz.vercel.app/", // Replace with actual deployed link
+    sourceUrl: "https://github.com/Aditya100905/GitHub-Contribution-Graph",
+    category: "Frontend",
+    year: "2024",
+  },
 ];
