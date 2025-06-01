@@ -44,7 +44,7 @@ export const projects = [
     year: "2024",
   },
   {
-    id: 2,
+    id: 3,
     title: "GitHub Contribution Graph",
     subtitle: "Pixel-perfect GitHub heatmap clone",
     description:
