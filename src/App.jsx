@@ -1,12 +1,12 @@
-import React from 'react'
-import Portfolio from './Components/Portfolio'
+import React from "react";
+import Portfolio from "./Components/Portfolio";
 
 const App = () => {
   return (
     <div>
-      <Portfolio/>
+      <Portfolio />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

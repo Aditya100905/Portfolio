@@ -18,8 +18,8 @@ import {
 } from "lucide-react";
 
 import { Github, Linkedin } from "./Icons.jsx";
-import ProjectCard from "./ProjectCard"; 
-import EmailContact from "./EmailContact"; 
+import ProjectCard from "./ProjectCard";
+import EmailContact from "./EmailContact";
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -31,7 +31,7 @@ const Portfolio = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [showAllProjects, setShowAllProjects] = useState(false);
-const [isProjectsAnimating, setIsProjectsAnimating] = useState(false);
+  const [isProjectsAnimating, setIsProjectsAnimating] = useState(false);
 
   const skillsRef = useRef(null);
   const heroRef = useRef(null);
@@ -561,210 +561,235 @@ const [isProjectsAnimating, setIsProjectsAnimating] = useState(false);
         </div>
       </section>
 
-<section id="projects" className="py-16 sm:py-20 lg:py-24 relative z-10 overflow-hidden">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Header */}
-    <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-        Featured Projects
-      </h2>
-      <p className="text-lg sm:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-        A showcase of my recent work and creative solutions
-      </p>
-      <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto mt-6 rounded-full" />
-    </div>
+      {/* Project Card Section */}
+      <section
+        id="projects"
+        className="py-16 sm:py-20 lg:py-24 relative z-10 overflow-hidden"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+              Featured Projects
+            </h2>
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              A showcase of my recent work and creative solutions
+            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 mx-auto mt-6 rounded-full" />
+          </div>
 
-    {/* Projects Grid */}
-    <div className="relative">
-      <div className="space-y-8 sm:space-y-12 lg:space-y-16">
-        {(showAllProjects ? projects : projects.slice(0, 2)).map((project, index) => (
-          <div
-            key={project.id}
-            className={`transform transition-all duration-700 ease-out ${
-              showAllProjects && index >= 2
-                ? isProjectsAnimating
-                  ? 'opacity-0 translate-y-16 scale-95'
-                  : 'opacity-100 translate-y-0 scale-100'
-                : 'opacity-100 translate-y-0 scale-100'
-            }`}
-            style={{
-              transitionDelay: showAllProjects && index >= 2 ? `${(index - 2) * 200}ms` : '0ms'
-            }}
-          >
-            <div className="group relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600/30 via-pink-600/20 to-cyan-600/30 rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500" />
-              <div className="relative">
-                <ProjectCard project={project} index={index} />
+          {/* Projects Grid */}
+          <div className="relative">
+            <div className="space-y-8 sm:space-y-12 lg:space-y-16">
+              {(showAllProjects ? projects : projects.slice(0, 2)).map(
+                (project, index) => (
+                  <div
+                    key={project.id}
+                    className={`transform transition-all duration-700 ease-out ${
+                      showAllProjects && index >= 2
+                        ? isProjectsAnimating
+                          ? "opacity-0 translate-y-16 scale-95"
+                          : "opacity-100 translate-y-0 scale-100"
+                        : "opacity-100 translate-y-0 scale-100"
+                    }`}
+                    style={{
+                      transitionDelay:
+                        showAllProjects && index >= 2
+                          ? `${(index - 2) * 200}ms`
+                          : "0ms",
+                    }}
+                  >
+                    <div className="group relative">
+                      <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600/30 via-pink-600/20 to-cyan-600/30 rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-all duration-500" />
+                      <div className="relative">
+                        <ProjectCard project={project} index={index} />
+                      </div>
+                    </div>
+                  </div>
+                )
+              )}
+            </div>
+
+            {/* Enhanced fade overlay */}
+            {!showAllProjects && projects.length > 2 && (
+              <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-900 via-gray-900/90 to-transparent pointer-events-none" />
+            )}
+          </div>
+
+          {/* Enhanced Show All / Show Less Button */}
+          {projects.length > 2 && (
+            <div className="text-center mt-12 sm:mt-16 lg:mt-20">
+              <button
+                onClick={() => {
+                  setIsProjectsAnimating(true);
+
+                  if (showAllProjects) {
+                    // When showing less, scroll to top of projects section
+                    setTimeout(() => {
+                      const projectsSection =
+                        document.getElementById("projects");
+                      if (projectsSection) {
+                        const headerOffset = 100;
+                        const elementPosition =
+                          projectsSection.getBoundingClientRect().top;
+                        const offsetPosition =
+                          elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: "smooth",
+                        });
+                      }
+
+                      setTimeout(() => {
+                        setShowAllProjects(false);
+                        setIsProjectsAnimating(false);
+                      }, 300);
+                    }, 100);
+                  } else {
+                    // When showing more, expand and smooth scroll to new content
+                    setShowAllProjects(true);
+
+                    setTimeout(() => {
+                      // Calculate position of first new project
+                      const newProjectsStart = document.querySelector(
+                        `[data-project-index="2"]`
+                      );
+                      if (newProjectsStart) {
+                        const headerOffset = 120;
+                        const elementPosition =
+                          newProjectsStart.getBoundingClientRect().top;
+                        const offsetPosition =
+                          elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: "smooth",
+                        });
+                      }
+                      setIsProjectsAnimating(false);
+                    }, 800);
+                  }
+                }}
+                disabled={isProjectsAnimating}
+                className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-5 text-white font-semibold text-base sm:text-lg rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100 overflow-hidden"
+                style={{
+                  background: showAllProjects
+                    ? "linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%)"
+                    : "linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%)",
+                  boxShadow: showAllProjects
+                    ? "0 10px 30px -5px rgba(239, 68, 68, 0.3), 0 4px 6px -2px rgba(239, 68, 68, 0.1)"
+                    : "0 10px 30px -5px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.1)",
+                }}
+              >
+                {/* Animated background overlay */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: showAllProjects
+                      ? "linear-gradient(135deg, #f87171 0%, #ef4444 50%, #dc2626 100%)"
+                      : "linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%)",
+                  }}
+                />
+
+                {/* Button content */}
+                <span className="relative z-10 flex items-center gap-3">
+                  {/* Loading spinner */}
+                  {isProjectsAnimating && (
+                    <div className="w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                  )}
+
+                  {/* Text content with smooth transitions */}
+                  <span className="transition-all duration-300">
+                    {isProjectsAnimating
+                      ? showAllProjects
+                        ? "Collapsing..."
+                        : "Loading..."
+                      : showAllProjects
+                      ? "Show Less Projects"
+                      : `View All ${projects.length} Projects`}
+                  </span>
+
+                  {/* Enhanced arrow with proper animations */}
+                  {!isProjectsAnimating && (
+                    <div
+                      className={`relative transition-all duration-500 ease-out ${
+                        showAllProjects
+                          ? "rotate-180 scale-110"
+                          : "rotate-0 scale-100 group-hover:translate-y-0.5"
+                      }`}
+                    >
+                      {showAllProjects ? (
+                        <svg
+                          className="w-5 h-5 transition-all rotate-180 duration-300"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          strokeWidth={2.5}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 10l7-7 7 7"
+                          />
+                        </svg>
+                      ) : (
+                        <svg
+                          className="w-5 h-5 transition-all duration-300 group-hover:animate-bounce"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          strokeWidth={2.5}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19 14l-7 7-7-7"
+                          />
+                        </svg>
+                      )}
+                    </div>
+                  )}
+                </span>
+
+                {/* Ripple effect */}
+                <div className="absolute inset-0 rounded-2xl bg-white opacity-0 group-active:opacity-20 transition-opacity duration-150" />
+
+                {/* Shine effect */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+              </button>
+
+              {/* Enhanced progress indicator */}
+              <div className="mt-8 flex justify-center items-center gap-4">
+                <div className="flex items-center gap-2">
+                  {Array.from({ length: Math.min(projects.length, 6) }).map(
+                    (_, i) => (
+                      <div
+                        key={i}
+                        className={`rounded-full transition-all duration-500 ${
+                          showAllProjects || i < 2
+                            ? "w-3 h-3 bg-gradient-to-r from-blue-500 to-cyan-500 shadow-lg shadow-blue-500/30"
+                            : "w-2 h-2 bg-gray-600 hover:bg-gray-500"
+                        }`}
+                      />
+                    )
+                  )}
+                  {projects.length > 6 && (
+                    <span className="text-sm text-gray-400 ml-2">
+                      +{projects.length - (showAllProjects ? 6 : 2)} more
+                    </span>
+                  )}
+                </div>
+
+                {/* Project counter */}
+                <div className="text-sm text-gray-400 bg-gray-800/50 px-3 py-1 rounded-full backdrop-blur-sm border border-gray-700/50">
+                  {showAllProjects ? projects.length : 2} of {projects.length}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Enhanced fade overlay */}
-      {!showAllProjects && projects.length > 2 && (
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-gray-900 via-gray-900/90 to-transparent pointer-events-none" />
-      )}
-    </div>
-
-    {/* Enhanced Show All / Show Less Button */}
-    {projects.length > 2 && (
-      <div className="text-center mt-12 sm:mt-16 lg:mt-20">
-        <button
-          onClick={() => {
-            setIsProjectsAnimating(true);
-            
-            if (showAllProjects) {
-              // When showing less, scroll to top of projects section
-              setTimeout(() => {
-                const projectsSection = document.getElementById('projects');
-                if (projectsSection) {
-                  const headerOffset = 100;
-                  const elementPosition = projectsSection.getBoundingClientRect().top;
-                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                  
-                  window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                  });
-                }
-                
-                setTimeout(() => {
-                  setShowAllProjects(false);
-                  setIsProjectsAnimating(false);
-                }, 300);
-              }, 100);
-            } else {
-              // When showing more, expand and smooth scroll to new content
-              setShowAllProjects(true);
-              
-              setTimeout(() => {
-                // Calculate position of first new project
-                const newProjectsStart = document.querySelector(`[data-project-index="2"]`);
-                if (newProjectsStart) {
-                  const headerOffset = 120;
-                  const elementPosition = newProjectsStart.getBoundingClientRect().top;
-                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                  
-                  window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                  });
-                }
-                setIsProjectsAnimating(false);
-              }, 800);
-            }
-          }}
-          disabled={isProjectsAnimating}
-          className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-5 text-white font-semibold text-base sm:text-lg rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100 overflow-hidden"
-          style={{
-            background: showAllProjects 
-              ? 'linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%)' 
-              : 'linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%)',
-            boxShadow: showAllProjects
-              ? '0 10px 30px -5px rgba(239, 68, 68, 0.3), 0 4px 6px -2px rgba(239, 68, 68, 0.1)'
-              : '0 10px 30px -5px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.1)'
-          }}
-        >
-          {/* Animated background overlay */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-               style={{
-                 background: showAllProjects
-                   ? 'linear-gradient(135deg, #f87171 0%, #ef4444 50%, #dc2626 100%)'
-                   : 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%)'
-               }} />
-          
-          {/* Button content */}
-          <span className="relative z-10 flex items-center gap-3">
-            {/* Loading spinner */}
-            {isProjectsAnimating && (
-              <div className="w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
-            )}
-            
-            {/* Text content with smooth transitions */}
-            <span className="transition-all duration-300">
-              {isProjectsAnimating 
-                ? (showAllProjects ? 'Collapsing...' : 'Loading...')
-                : (showAllProjects ? 'Show Less Projects' : `View All ${projects.length} Projects`)
-              }
-            </span>
-            
-            {/* Enhanced arrow with proper animations */}
-            {!isProjectsAnimating && (
-              <div className={`relative transition-all duration-500 ease-out ${
-                showAllProjects ? 'rotate-180 scale-110' : 'rotate-0 scale-100 group-hover:translate-y-0.5'
-              }`}>
-                {showAllProjects ? (
-                  <svg 
-                    className="w-5 h-5 transition-all rotate-180 duration-300" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    strokeWidth={2.5}
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      d="M5 10l7-7 7 7" 
-                    />
-                  </svg>
-                ) : (
-                  <svg 
-                    className="w-5 h-5 transition-all duration-300 group-hover:animate-bounce" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                    strokeWidth={2.5}
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      d="M19 14l-7 7-7-7" 
-                    />
-                  </svg>
-                )}
-              </div>
-            )}
-          </span>
-          
-          {/* Ripple effect */}
-          <div className="absolute inset-0 rounded-2xl bg-white opacity-0 group-active:opacity-20 transition-opacity duration-150" />
-          
-          {/* Shine effect */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
-        </button>
-        
-        {/* Enhanced progress indicator */}
-        <div className="mt-8 flex justify-center items-center gap-4">
-          <div className="flex items-center gap-2">
-            {Array.from({ length: Math.min(projects.length, 6) }).map((_, i) => (
-              <div
-                key={i}
-                className={`rounded-full transition-all duration-500 ${
-                  (showAllProjects || i < 2)
-                    ? 'w-3 h-3 bg-gradient-to-r from-blue-500 to-cyan-500 shadow-lg shadow-blue-500/30'
-                    : 'w-2 h-2 bg-gray-600 hover:bg-gray-500'
-                }`}
-              />
-            ))}
-            {projects.length > 6 && (
-              <span className="text-sm text-gray-400 ml-2">
-                +{projects.length - (showAllProjects ? 6 : 2)} more
-              </span>
-            )}
-          </div>
-          
-          {/* Project counter */}
-          <div className="text-sm text-gray-400 bg-gray-800/50 px-3 py-1 rounded-full backdrop-blur-sm border border-gray-700/50">
-            {showAllProjects ? projects.length : 2} of {projects.length}
-          </div>
+          )}
         </div>
-      </div>
-    )}
-  </div>
-</section>
-
-
+      </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 relative z-10">
@@ -832,7 +857,8 @@ const [isProjectsAnimating, setIsProjectsAnimating] = useState(false);
 
 <style jsx>{`
   @keyframes gradient-x {
-    0%, 100% {
+    0%,
+    100% {
       background-size: 200% 200%;
       background-position: left center;
     }
@@ -841,16 +867,16 @@ const [isProjectsAnimating, setIsProjectsAnimating] = useState(false);
       background-position: right center;
     }
   }
-  
+
   .animate-gradient-x {
     animation: gradient-x 3s ease infinite;
   }
-  
+
   @media (prefers-reduced-motion: reduce) {
     .animate-gradient-x {
       animation: none;
     }
   }
-`}</style>
+`}</style>;
 
 export default Portfolio;

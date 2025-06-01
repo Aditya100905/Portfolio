@@ -179,7 +179,6 @@
 
 // export default ProjectCard;
 
-
 import React, { useState, useEffect } from "react";
 import { ExternalLink, Eye, Sparkles, Github } from "lucide-react";
 
@@ -198,7 +197,7 @@ const ProjectCard = ({ project, index }) => {
       className={`relative overflow-hidden rounded-3xl border border-gray-800/50 backdrop-blur-sm transition-all duration-700 hover:border-purple-500/50 group ${
         index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
       } flex flex-col md:flex hover:shadow-2xl hover:shadow-purple-500/20 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -212,7 +211,9 @@ const ProjectCard = ({ project, index }) => {
       {/* Enhanced Background Gradients */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 to-gray-800/60"></div>
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-        <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20`}></div>
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20`}
+        ></div>
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500/15 via-blue-500/15 to-cyan-500/15 animate-pulse"></div>
       </div>
 
@@ -247,7 +248,7 @@ const ProjectCard = ({ project, index }) => {
         <h3 className="text-2xl lg:text-4xl font-bold mb-4 group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500 leading-tight">
           {project.title}
         </h3>
-        
+
         {/* Enhanced Subtitle */}
         <p className="text-lg text-gray-400 mb-6 group-hover:text-gray-300 transition-colors duration-300 font-medium">
           {project.subtitle}
@@ -312,7 +313,7 @@ const ProjectCard = ({ project, index }) => {
             <span className="relative z-10">Live Demo</span>
             <ExternalLink className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300 relative z-10" />
           </a>
-          
+
           <a
             href={project.sourceUrl}
             target="_blank"
@@ -366,7 +367,9 @@ const ProjectCard = ({ project, index }) => {
             <div className="text-purple-400 font-bold text-lg mb-1">
               {project.category}
             </div>
-            <div className="text-gray-400 text-sm font-medium">{project.year}</div>
+            <div className="text-gray-400 text-sm font-medium">
+              {project.year}
+            </div>
           </div>
         </div>
 

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Mail, MapPin, Send, Copy, Check, X } from 'lucide-react';
-import { Github, Linkedin } from './Icons.jsx';
+import React, { useState } from "react";
+import { Mail, MapPin, Send, Copy, Check, X } from "lucide-react";
+import { Github, Linkedin } from "./Icons.jsx";
 
 const EmailContact = () => {
   const [emailData, setEmailData] = useState({
