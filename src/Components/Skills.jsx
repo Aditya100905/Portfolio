@@ -92,7 +92,7 @@ export const skills = [
   // Backend / Framework
   {
     name: "Flask",
-    level: 40, // Assuming beginner to intermediate
+    level: 30, // Assuming beginner to intermediate
     category: "Backend",
     icon: <FlaskConical className="w-5 h-5" />,
     color: "from-gray-600 via-gray-500 to-gray-100",
