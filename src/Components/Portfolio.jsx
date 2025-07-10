@@ -517,42 +517,25 @@ const Portfolio = () => {
             >
               Technical Skills
             </h3>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {skills.map((skill, index) => (
                 <div
                   key={index}
-                  aria-labelledby="skills-heading"
-                  className={`${skill.bgColor} border border-gray-700/60 rounded-2xl p-6 backdrop-blur-sm hover:border-purple-500/40 transition-all duration-500 group relative overflow-hidden`}
+                  className={`border border-gray-700/60 rounded-2xl p-6 backdrop-blur-sm hover:border-purple-500/40 transition-all duration-500 group relative overflow-hidden ${skill.bgColor}`}
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-3">
-                      <div
-                        className={`bg-gradient-to-r ${skill.color} p-2 rounded-lg group-hover:scale-110 transition-transform duration-300`}
-                      >
-                        {skill.icon}
-                      </div>
-                      <div>
-                        <h4 className="text-white font-semibold">
-                          {skill.name}
-                        </h4>
-                        <p className="text-gray-400 text-sm">
-                          {skill.category}
-                        </p>
-                      </div>
-                    </div>
-                    <span className="text-purple-400 font-bold">
-                      {skill.level}%
-                    </span>
-                  </div>
-
-                  <div className="w-full bg-gray-700/60 rounded-full h-2 overflow-hidden">
+                  <div className="flex items-center space-x-4">
                     <div
-                      className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out`}
-                      style={{
-                        width: skillsInView ? `${skill.level}%` : "0%",
-                        transitionDelay: `${index * 100}ms`,
-                      }}
-                    ></div>
+                      className={`bg-gradient-to-r ${skill.color} p-3 rounded-lg group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      {skill.icon}
+                    </div>
+                    <div>
+                      <h4 className="text-white font-semibold text-lg">
+                        {skill.name}
+                      </h4>
+                      <p className="text-gray-400 text-sm">{skill.category}</p>
+                    </div>
                   </div>
                 </div>
               ))}

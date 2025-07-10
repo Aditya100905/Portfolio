@@ -48,7 +48,7 @@ export const skills = [
   },
   {
     name: "SQL",
-    level: 30, // Adjusted since you said "little bit"
+    level: 30,
     category: "Language",
     icon: <Database className="w-5 h-5" />,
     color: "from-indigo-500 to-blue-600",
@@ -92,11 +92,19 @@ export const skills = [
   // Backend / Framework
   {
     name: "Flask",
-    level: 40, // Assuming beginner to intermediate
+    level: 40,
     category: "Backend",
     icon: <FlaskConical className="w-5 h-5" />,
     color: "from-gray-600 via-gray-500 to-gray-100",
     bgColor: "bg-gray-500/10",
+  },
+  {
+    name: "MySQL",
+    level: 45,
+    category: "Backend",
+    icon: <Database className="w-5 h-5" />,
+    color: "from-sky-600 to-blue-600",
+    bgColor: "bg-sky-500/10",
   },
 
   // Analytics / Data
